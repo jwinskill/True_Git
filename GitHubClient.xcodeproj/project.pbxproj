@@ -20,6 +20,9 @@
 		03150E0E19F5CB2B007846FA /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03150E0D19F5CB2B007846FA /* SearchResultCell.swift */; };
 		03150E1019F5D17D007846FA /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03150E0F19F5D17D007846FA /* UsersViewController.swift */; };
 		03150E1219F5EEFE007846FA /* octocat.png in Resources */ = {isa = PBXBuildFile; fileRef = 03150E1119F5EEFE007846FA /* octocat.png */; };
+		032A167E19F840E9000CCF08 /* UsersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A167D19F840E9000CCF08 /* UsersCollectionViewController.swift */; };
+		032A168019F84202000CCF08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A167F19F84202000CCF08 /* User.swift */; };
+		032A168219F84836000CCF08 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A168119F84836000CCF08 /* UserCell.swift */; };
 		03BF85F719F6D14100A94F5F /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF85F619F6D14100A94F5F /* DetailController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +54,9 @@
 		03150E0D19F5CB2B007846FA /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		03150E0F19F5D17D007846FA /* UsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		03150E1119F5EEFE007846FA /* octocat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = octocat.png; sourceTree = "<group>"; };
+		032A167D19F840E9000CCF08 /* UsersCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewController.swift; sourceTree = "<group>"; };
+		032A167F19F84202000CCF08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		032A168119F84836000CCF08 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		03BF85F619F6D14100A94F5F /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,8 +139,9 @@
 		03150E0819F5A738007846FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				03150E0B19F5AA6C007846FA /* repoJSONExample.json */,
+				032A167F19F84202000CCF08 /* User.swift */,
 				03150E0619F5A732007846FA /* Repository.swift */,
+				03150E0B19F5AA6C007846FA /* repoJSONExample.json */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -145,6 +152,7 @@
 				03150DE619F56BB1007846FA /* Main.storyboard */,
 				03150E0D19F5CB2B007846FA /* SearchResultCell.swift */,
 				03150E1119F5EEFE007846FA /* octocat.png */,
+				032A168119F84836000CCF08 /* UserCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 			children = (
 				03BF85F619F6D14100A94F5F /* DetailController.swift */,
 				03150E0F19F5D17D007846FA /* UsersViewController.swift */,
+				032A167D19F840E9000CCF08 /* UsersCollectionViewController.swift */,
 				03150E0419F5A1B3007846FA /* NetworkController.swift */,
 				03150E0219F56FE9007846FA /* SplitContainerViewController.swift */,
 			);
@@ -264,11 +273,14 @@
 			files = (
 				03BF85F719F6D14100A94F5F /* DetailController.swift in Sources */,
 				03150E0519F5A1B3007846FA /* NetworkController.swift in Sources */,
+				032A167E19F840E9000CCF08 /* UsersCollectionViewController.swift in Sources */,
 				03150DE019F56BB1007846FA /* AppDelegate.swift in Sources */,
 				03150DE319F56BB1007846FA /* GitHubClient.xcdatamodeld in Sources */,
 				03150E1019F5D17D007846FA /* UsersViewController.swift in Sources */,
 				03150E0319F56FE9007846FA /* SplitContainerViewController.swift in Sources */,
 				03150E0E19F5CB2B007846FA /* SearchResultCell.swift in Sources */,
+				032A168019F84202000CCF08 /* User.swift in Sources */,
+				032A168219F84836000CCF08 /* UserCell.swift in Sources */,
 				03150E0719F5A732007846FA /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

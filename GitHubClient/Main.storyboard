@@ -56,9 +56,6 @@
                                                 <constraint firstItem="8w9-lb-bqD" firstAttribute="leading" secondItem="FBZ-zP-FI7" secondAttribute="leadingMargin" id="pk9-jW-mFv"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="cKg-ZF-5j6" kind="showDetail" id="ukT-ns-Czq"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Wru-le-DHT">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -82,7 +79,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eWV-2F-1He" kind="showDetail" id="rTN-Zy-cBs"/>
+                                            <segue destination="cKg-ZF-5j6" kind="showDetail" id="vJT-Kd-C9D"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BdZ-s7-Crv">
@@ -124,7 +121,7 @@
         <!--Users View Controller-->
         <scene sceneID="2JU-Cw-f6Q">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="cKg-ZF-5j6" customClass="UsersViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cKg-ZF-5j6" customClass="UsersViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YqT-JM-fl0"/>
                         <viewControllerLayoutGuide type="bottom" id="Juc-Ae-1S1"/>
@@ -202,92 +199,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cea-WX-uoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978" y="-486"/>
-        </scene>
-        <!--Users Collection View Controller-->
-        <scene sceneID="DJ4-xP-aF7">
-            <objects>
-                <viewController id="eWV-2F-1He" customClass="UsersCollectionViewController" customModule="GitHubClient" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Q6s-bZ-ogp"/>
-                        <viewControllerLayoutGuide type="bottom" id="PFC-n9-vUD"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mZG-9E-OHU">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="c7Z-Ze-7hM">
-                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mvG-pH-Fnt">
-                                    <size key="itemSize" width="159" height="196"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="USER_CELL" id="CVX-NC-lgf" customClass="UserCell" customModule="GitHubClient" customModuleProvider="target">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="159" height="196"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WvT-6G-RUZ">
-                                                    <rect key="frame" x="58" y="167" width="42" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m8i-oE-ssG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159" height="159"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="m8i-oE-ssG" secondAttribute="height" multiplier="1:1" id="PVq-1u-upZ"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="centerX" secondItem="m8i-oE-ssG" secondAttribute="centerX" id="GPF-mw-ub3"/>
-                                            <constraint firstItem="WvT-6G-RUZ" firstAttribute="top" secondItem="m8i-oE-ssG" secondAttribute="bottom" constant="8" id="TQA-Od-2ma"/>
-                                            <constraint firstAttribute="trailing" secondItem="m8i-oE-ssG" secondAttribute="trailing" id="aPx-vQ-eBB"/>
-                                            <constraint firstItem="m8i-oE-ssG" firstAttribute="top" secondItem="CVX-NC-lgf" secondAttribute="top" id="dWI-or-uVO"/>
-                                            <constraint firstItem="m8i-oE-ssG" firstAttribute="leading" secondItem="CVX-NC-lgf" secondAttribute="leading" id="h4b-GA-NNW"/>
-                                            <constraint firstAttribute="centerX" secondItem="WvT-6G-RUZ" secondAttribute="centerX" id="o0h-pt-mSt"/>
-                                            <constraint firstAttribute="bottom" secondItem="WvT-6G-RUZ" secondAttribute="bottom" constant="8" id="oRr-da-2jq"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="imageView" destination="m8i-oE-ssG" id="1SE-Yy-Cix"/>
-                                            <outlet property="userName" destination="WvT-6G-RUZ" id="Nux-s5-mQA"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xbD-3x-j0w">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="c7Z-Ze-7hM" secondAttribute="centerX" id="0SJ-sN-iMH"/>
-                            <constraint firstItem="c7Z-Ze-7hM" firstAttribute="top" secondItem="xbD-3x-j0w" secondAttribute="bottom" id="E7Q-Fa-7kh"/>
-                            <constraint firstItem="xbD-3x-j0w" firstAttribute="top" secondItem="Q6s-bZ-ogp" secondAttribute="bottom" id="MIU-ES-yZA"/>
-                            <constraint firstItem="c7Z-Ze-7hM" firstAttribute="top" secondItem="xbD-3x-j0w" secondAttribute="bottom" id="Ocm-jM-PGr"/>
-                            <constraint firstAttribute="bottom" secondItem="c7Z-Ze-7hM" secondAttribute="bottom" id="QLY-DN-0zB"/>
-                            <constraint firstAttribute="trailing" secondItem="c7Z-Ze-7hM" secondAttribute="trailing" id="abi-Xo-S5p"/>
-                            <constraint firstItem="xbD-3x-j0w" firstAttribute="leading" secondItem="mZG-9E-OHU" secondAttribute="leading" id="jfZ-ce-zxf"/>
-                            <constraint firstItem="c7Z-Ze-7hM" firstAttribute="leading" secondItem="mZG-9E-OHU" secondAttribute="leading" id="lgS-f6-Iaf"/>
-                            <constraint firstAttribute="trailing" secondItem="xbD-3x-j0w" secondAttribute="trailing" id="sZt-Qv-ADd"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="searchBarOutlet" destination="xbD-3x-j0w" id="xnu-Gg-WPB"/>
-                        <outlet property="usersCollectionView" destination="c7Z-Ze-7hM" id="jdK-O8-OaW"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fsF-qw-ker" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1978" y="221"/>
+            <point key="canvasLocation" x="1776" y="-226"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RdK-Wr-57J">
