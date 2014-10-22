@@ -47,9 +47,7 @@ class UsersCollectionViewController: UIViewController, UICollectionViewDataSourc
                 cell.imageView.image = user!.avatarImage!
             } else {
                 self.networkController.downloadAvatarForUser(user!, completionHandler: { (image) -> Void in
-                    let cellForImage = self.usersCollectionView.cellForItemAtIndexPath(indexPath) as UserCell
-                    cellForImage.imageView.image = image
-                    self.usersCollectionView.reloadData()
+                    cell.imageView.image = image
                 })
             }
         }
