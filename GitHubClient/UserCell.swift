@@ -11,4 +11,9 @@ import UIKit
 class UserCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = UIImage (named: "octocat")
+    }
 }

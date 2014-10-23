@@ -119,6 +119,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    // MARK: - NavigationController Animation methods
+
 
 }
 

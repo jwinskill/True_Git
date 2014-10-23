@@ -114,27 +114,33 @@ class NetworkController {
     }
  
     func downloadAvatarForRepo(repo: Repository, completionHandler: (image: UIImage) -> Void) {
-        let url = NSURL(string: repo.avatarURL)
-        println(repo.avatarURL)
-        let imageData = NSData(contentsOfURL: url!)
-        let avatarImage = UIImage(data: imageData!)
-        repo.avatarImage = avatarImage
         
-        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            completionHandler(image: avatarImage!)
+        self.imageQueue.addOperationWithBlock { () -> Void in
+            let url = NSURL(string: repo.avatarURL)
+            println(repo.avatarURL)
+            let imageData = NSData(contentsOfURL: url!)
+            let avatarImage = UIImage(data: imageData!)
+            repo.avatarImage = avatarImage
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+                completionHandler(image: avatarImage!)
+            }
         }
     }
     
     func downloadAvatarForUser(user: User, completionHandler: (image: UIImage) -> Void) {
-        let url = NSURL(string: user.avatarImageURL)
-        println(user.avatarImageURL)
-        let imageData = NSData(contentsOfURL: url!)
-        let avatarImage = UIImage(data: imageData!)
-        user.avatarImage = avatarImage
         
-        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            completionHandler(image: avatarImage!)
+        self.imageQueue.addOperationWithBlock { () -> Void in
+            let url = NSURL(string: user.avatarImageURL)
+            let imageData = NSData(contentsOfURL: url!)
+            let avatarImage = UIImage(data: imageData!)
+            user.avatarImage = avatarImage
+            
+            NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
+                completionHandler(image: avatarImage!)
+            }
         }
+
     }
     
     func requestOAuthAccess() {

@@ -14,15 +14,17 @@ class Repository {
     var name: String
     var fullName: String
     var avatarURL: String
+    var repoURL: String
     var login: String
     var avatarImage: UIImage?
     
-    init(name: String, fullName: String, avatarURL: String, login: String) {
+    init(name: String, fullName: String, avatarURL: String, login: String, repoURL: String) {
         // self.totalCount = totalCount
         self.name = name
         self.fullName = fullName
         self.avatarURL = avatarURL
         self.login = login
+        self.repoURL = repoURL
     }
     
     class func parseJSONIntoRepos(rawJSONData: NSData) -> [Repository]? {
@@ -39,11 +41,12 @@ class Repository {
                     for object in itemsArray {
                         if let item = object as? NSDictionary {
                             let name = item["name"] as String
+                            let repoURL = item["html_url"] as String
                             let fullName = item["full_name"] as String
                             if let ownerDictionary = item["owner"] as? NSDictionary {
                                 let avatarURL = ownerDictionary["avatar_url"] as String
                                 let login = ownerDictionary["login"] as String
-                                var newRepo = Repository(name: name, fullName: fullName, avatarURL: avatarURL, login: login)
+                                var newRepo = Repository(name: name, fullName: fullName, avatarURL: avatarURL, login: login, repoURL: repoURL)
                                 repos.append(newRepo)
                             }
                         }

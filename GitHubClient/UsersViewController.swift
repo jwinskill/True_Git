@@ -39,6 +39,10 @@ class UsersViewController: UIViewController, UITableViewDataSource, UISearchBarD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SEARCH_CELL") as SearchResultCell
         
+        cell.avatarImageView.image = UIImage(named: "octocat")
+        var currentTag = cell.tag + 1
+        cell.tag = currentTag
+        
         let repo = self.repos?[indexPath.row]
         if repo != nil {
             cell.userNameLabel.text = repo!.login
@@ -47,9 +51,10 @@ class UsersViewController: UIViewController, UITableViewDataSource, UISearchBarD
                 cell.avatarImageView?.image = repo!.avatarImage!
             } else {
                 self.networkController.downloadAvatarForRepo(repo!, completionHandler: { (image) -> Void in
-                    let cellForImage = self.tableView.cellForRowAtIndexPath(indexPath) as SearchResultCell
-                    cellForImage.avatarImageView.image = image
-                    self.tableView.reloadData()
+        
+                    if cell.tag == currentTag {
+                        cell.avatarImageView.image = image
+                    }
                 })
             }
         }
@@ -72,7 +77,47 @@ class UsersViewController: UIViewController, UITableViewDataSource, UISearchBarD
                 }
             }
         })
-
+    }
+    
+    func searchBar(searchBar: UISearchBar, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        println(text)
+        
+        var warningRect = CGRect(x: 37, y: 114, width: 300, height: 40)
+        var warningLabel = UILabel()
+        warningLabel.frame = warningRect
+        warningLabel.backgroundColor = UIColor.redColor()
+        warningLabel.textColor = UIColor.whiteColor()
+        warningLabel.textAlignment = NSTextAlignment.Center
+        warningLabel.layer.cornerRadius = 8
+        warningLabel.clipsToBounds = true
+        warningLabel.alpha = 0
+        warningLabel.text = "Search does not support character '\(text)'"
+        
+        
+        if text.validate() == false {
+            view.addSubview(warningLabel)
+            UIView.animateWithDuration(0.8, delay: 0.0, options: nil, animations: { () -> Void in
+                warningLabel.alpha = 1.0
+            }, completion: { (finished) -> Void in
+               UIView.animateWithDuration(0.8, delay: 2.0, options: nil, animations: { () -> Void in
+                warningLabel.alpha = 0.0
+               }, completion: { (finished) -> Void in
+                //
+               })
+            })
+        }
+        return text.validate()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SEGUE_TO_WEBVIEW" {
+            var destinationVC = segue.destinationViewController as WebViewController
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                if let repoToBePassed = self.repos?[indexPath.row] {
+                    destinationVC.urlString = repoToBePassed.repoURL
+                }
+            }
+        }
     }
     
 }
