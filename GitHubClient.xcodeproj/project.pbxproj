@@ -23,6 +23,7 @@
 		032A167E19F840E9000CCF08 /* UsersCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A167D19F840E9000CCF08 /* UsersCollectionViewController.swift */; };
 		032A168019F84202000CCF08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A167F19F84202000CCF08 /* User.swift */; };
 		032A168219F84836000CCF08 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032A168119F84836000CCF08 /* UserCell.swift */; };
+		035FBF2C19FAE53400BE3401 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035FBF2B19FAE53400BE3401 /* MyProfileViewController.swift */; };
 		03BF85F719F6D14100A94F5F /* DetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BF85F619F6D14100A94F5F /* DetailController.swift */; };
 		03C557A919F861CE004D33FE /* ShowImageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C557A819F861CE004D33FE /* ShowImageAnimator.swift */; };
 		03C557AB19F861E0004D33FE /* HideImageAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C557AA19F861E0004D33FE /* HideImageAnimator.swift */; };
@@ -63,6 +64,7 @@
 		032A167D19F840E9000CCF08 /* UsersCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersCollectionViewController.swift; sourceTree = "<group>"; };
 		032A167F19F84202000CCF08 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		032A168119F84836000CCF08 /* UserCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
+		035FBF2B19FAE53400BE3401 /* MyProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
 		03BF85F619F6D14100A94F5F /* DetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailController.swift; sourceTree = "<group>"; };
 		03C557A819F861CE004D33FE /* ShowImageAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowImageAnimator.swift; sourceTree = "<group>"; };
 		03C557AA19F861E0004D33FE /* HideImageAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideImageAnimator.swift; sourceTree = "<group>"; };
@@ -174,14 +176,15 @@
 		03150E0A19F5A74A007846FA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				035FBF2B19FAE53400BE3401 /* MyProfileViewController.swift */,
 				03F81C4019F9690F0051BB72 /* WebViewController.swift */,
 				03C557AE19F87323004D33FE /* MenuTableViewController.swift */,
 				03BF85F619F6D14100A94F5F /* DetailController.swift */,
 				03150E0F19F5D17D007846FA /* UsersViewController.swift */,
 				032A167D19F840E9000CCF08 /* UsersCollectionViewController.swift */,
-				03150E0419F5A1B3007846FA /* NetworkController.swift */,
 				03150E0219F56FE9007846FA /* SplitContainerViewController.swift */,
 				03C557AC19F86363004D33FE /* ImageViewController.swift */,
+				03150E0419F5A1B3007846FA /* NetworkController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				03150E0319F56FE9007846FA /* SplitContainerViewController.swift in Sources */,
 				03150E0E19F5CB2B007846FA /* SearchResultCell.swift in Sources */,
 				032A168019F84202000CCF08 /* User.swift in Sources */,
+				035FBF2C19FAE53400BE3401 /* MyProfileViewController.swift in Sources */,
 				03C557AD19F86363004D33FE /* ImageViewController.swift in Sources */,
 				03C557AB19F861E0004D33FE /* HideImageAnimator.swift in Sources */,
 				032A168219F84836000CCF08 /* UserCell.swift in Sources */,
@@ -439,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GitHubClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -449,6 +454,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = GitHubClient/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

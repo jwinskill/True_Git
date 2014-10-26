@@ -23,6 +23,41 @@ class NetworkController {
         self.imageQueue.maxConcurrentOperationCount = 6
     }
     
+    func fetchAuthenticatedUser(completionHandler: (errorDescription: String?, authenticatedUser: AuthenticatedUser?) -> Void) {
+        let url = NSURL(string: "https://api.github.com/user")
+        
+        let value = NSUserDefaults.standardUserDefaults().valueForKey("OAuthToken") as NSString
+        var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        configuration.HTTPAdditionalHeaders = ["Authorization": "token \(value)"]
+        self.urlSession = NSURLSession(configuration: configuration)
+        
+        let dataTask = self.urlSession!.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
+            if error != nil {
+                println("something bad happened")
+            } else {
+                if let httpResponse = response as? NSHTTPURLResponse {
+                    switch httpResponse.statusCode {
+                    case 200...299:
+                        println("Authenticated User Received, code:\(httpResponse.statusCode)")
+                        
+                        let authenticatedUser = AuthenticatedUser.parseJsonIntoAuthenticatedUser(data)
+                        NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
+                            completionHandler(errorDescription: nil, authenticatedUser: authenticatedUser)
+                        })
+                    case 400...499:
+                        println("This is the user's fault, code: \(httpResponse.statusCode)")
+                    case 500...599:
+                        println("This is ther server's fault, code: \(httpResponse.statusCode)")
+                    default:
+                        println("Something generally bad happened")
+                    }
+                }
+            }
+        })
+        dataTask.resume()
+        
+    }
+    
     func fetchRepos(searchTerm: String, completionHandler: (errorDescription: String?, repos: [Repository]?) -> Void) {
         
         let formattedSearchTerm = searchTerm.stringByReplacingOccurrencesOfString(" ", withString: "+", options: NSStringCompareOptions.LiteralSearch, range: nil)
@@ -33,8 +68,6 @@ class NetworkController {
         var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
         configuration.HTTPAdditionalHeaders = ["Authorization": "token \(value)"]
         self.urlSession = NSURLSession(configuration: configuration)
-        
-        println(NSUserDefaults.standardUserDefaults().valueForKey("OAuthToken") as NSString)
         
         
         let dataTask = self.urlSession!.dataTaskWithURL(url!, completionHandler: { (data, response, error) -> Void in
@@ -131,6 +164,7 @@ class NetworkController {
     func downloadAvatarForUser(user: User, completionHandler: (image: UIImage) -> Void) {
         
         self.imageQueue.addOperationWithBlock { () -> Void in
+            println(user.avatarImageURL)
             let url = NSURL(string: user.avatarImageURL)
             let imageData = NSData(contentsOfURL: url!)
             let avatarImage = UIImage(data: imageData!)
@@ -147,6 +181,7 @@ class NetworkController {
         let url = gitHubOAuthURL + clientID + "&" + redirectURL + "&" + scope
         UIApplication.sharedApplication().openURL(NSURL(string: url)!)
     }
+    
     
     func handleOAuthURL(callbackURL: NSURL) {
         let query = callbackURL.query

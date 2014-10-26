@@ -40,3 +40,46 @@ class User {
     }
     
 }
+
+class AuthenticatedUser: User {
+    var hirable: Bool
+    var bio: String?
+    var publicRepoCount: Int
+    var privateRepoCount: Int
+    
+    init(userName: String, avatarImageURL: String, hirable: Bool, publicRepoCount: Int, privateRepoCount: Int, bio: String) {
+        
+        self.hirable = hirable
+        self.bio = bio
+        self.publicRepoCount = publicRepoCount
+        self.privateRepoCount = privateRepoCount
+        
+        super.init(userName: userName, avatarImageURL: avatarImageURL)
+    }
+    
+    class func parseJsonIntoAuthenticatedUser(rawData: NSData) -> AuthenticatedUser? {
+        
+        var error: NSError?
+        
+        if let jsonDictionary = NSJSONSerialization.JSONObjectWithData(rawData, options: nil, error: &error) as? NSDictionary {
+            var hirable = jsonDictionary["hireable"] as? Bool
+            var bio = jsonDictionary["bio"] as? String
+            var publicRepoCount = jsonDictionary["public_repos"] as? Int
+            var userName = jsonDictionary["login"] as? String
+            var avatarURL = jsonDictionary["avatar_url"] as? String
+            if let plan = jsonDictionary["plan"] as? NSDictionary {
+                var privateRepoCount = plan["private_repos"] as? Int
+                if bio != nil {
+                    var authenticatedUser = AuthenticatedUser(userName: userName!, avatarImageURL: avatarURL!, hirable: hirable!, publicRepoCount: publicRepoCount!, privateRepoCount: privateRepoCount!, bio: bio!)
+                    return authenticatedUser
+                } else {
+                    var authenticatedUser = AuthenticatedUser(userName: userName!, avatarImageURL: avatarURL!, hirable: hirable!, publicRepoCount: publicRepoCount!, privateRepoCount: privateRepoCount!, bio: "bio not available")
+                    return authenticatedUser
+                }
+                
+            }
+        }
+        return nil
+    }
+    
+}

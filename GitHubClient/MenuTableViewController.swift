@@ -9,10 +9,28 @@
 import UIKit
 
 class MenuTableViewController: UITableViewController, UINavigationControllerDelegate {
+    
+    var networkController: NetworkController!
+    var authenticatedUser: AuthenticatedUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
+        self.networkController = appDelegate.networkController
+        
+        self.networkController.fetchAuthenticatedUser { (errorDescription, authenticatedUser) -> Void in
+            
+            if errorDescription != nil {
+                println("Something bad happened")
+            } else {
+                self.authenticatedUser = authenticatedUser
+                println(self.authenticatedUser?.userName)
+            }
+            
+        }
+
+        
         self.navigationController?.delegate = self
     }
     
@@ -32,6 +50,16 @@ class MenuTableViewController: UITableViewController, UINavigationControllerDele
             return animator
         }
         return nil
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SHOW_PROFILE" {
+            let destinationVC = segue.destinationViewController as MyProfileViewController
+            if self.authenticatedUser != nil {
+                destinationVC.authenticatedUser = self.authenticatedUser!
+                
+            }
+        }
     }
 
 }
